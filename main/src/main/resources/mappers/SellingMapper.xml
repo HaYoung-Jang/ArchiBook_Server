@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.archibook.main.mapper.SellingMapper">
+	<insert id="insertSelling" parameterType="SellingDTO">
+		INSERT INTO book_selling(
+			  registerd_id
+			, isbn
+			, account_id
+			, price_registerd
+			, is_sold
+			, image_path
+			, describe_detail
+			, date_registerd
+		) VALUES (
+			#{registerd_id}
+			, #{isbn}
+			, #{account_id}
+			, #{price_registerd}
+			, false
+			, #{image_path}
+			, #{describe_detail}
+			, #{date_registerd}
+		)
+	</insert>
+	
+	<select id="selectSellingDetail" parameterType="int" resultType="SellingDTO">
+		SELECT
+			  registerd_id
+			, book_selling.isbn
+			, book_selling.account_id
+			, price_registerd
+			, is_sold
+			, image_path
+			, describe_detail
+			, date_registerd
+			, member.nick_name
+			, member.profile_color
+			, book_info.title
+			, book_info.author
+			, book_info.publisher
+			, book_info.date_published
+			, book_info.price_origin
+		FROM
+			book_selling, member, book_info
+		WHERE 
+			(book_selling.isbn = book_info.isbn)
+		AND
+			(book_selling.account_id = member.account_id)
+		AND 
+			(registerd_id = #{registerd_id})
+	</select>
+	
+	<update id="updateSelling" parameterType="SellingDTO">
+		UPDATE book_selling
+		SET
+			is_sold = true
+		WHERE
+			registerd_id = #{registerd_id}
+		AND 
+			account_id = #{account_id}
+	</update>
+	
+	<delete id="deleteSelling" parameterType="SellingDTO">
+		DELETE FROM book_selling
+		WHERE
+			registerd_id = #{registerd_id}
+		AND 
+			account_id = #{account_id}
+	</delete>
+	
+	<select id="selectSellingAll" parameterType="SellingDTO" resultType="SellingDTO">
+		SELECT
+			  registerd_id
+			, book_selling.isbn
+			, book_selling.account_id
+			, price_registerd
+			, is_sold
+			, image_path
+			, describe_detail
+			, date_registerd
+			, member.nick_name
+			, member.profile_color
+			, book_info.title
+			, book_info.author
+			, book_info.publisher
+			, book_info.date_published
+			, book_info.price_origin
+		FROM
+			book_selling, member, book_info
+		WHERE 
+			(book_selling.isbn = book_info.isbn)
+		AND
+			(book_selling.account_id = member.account_id)
+		ORDER BY
+			registerd_id DESC
+	</select>
+	
+	<select id="selectSellingList" parameterType="SellingDTO" resultType="SellingDTO">
+		SELECT
+			  registerd_id
+			, book_selling.isbn
+			, book_selling.account_id
+			, price_registerd
+			, is_sold
+			, image_path
+			, describe_detail
+			, date_registerd
+			, member.nick_name
+			, member.profile_color
+			, book_info.title
+			, book_info.author
+			, book_info.publisher
+			, book_info.date_published
+			, book_info.price_origin
+		FROM
+			book_selling, member, book_info
+		WHERE 
+			(book_selling.isbn = book_info.isbn)
+		AND
+			(book_selling.account_id = member.account_id)
+		AND
+			(is_sold = false)
+		ORDER BY
+			registerd_id DESC
+	</select>
+	
+	<select id="selectSellingPersonal" parameterType="SellingDTO" resultType="SellingDTO">
+		SELECT
+			  registerd_id
+			, book_selling.isbn
+			, book_selling.account_id
+			, price_registerd
+			, is_sold
+			, image_path
+			, describe_detail
+			, date_registerd
+			, member.nick_name
+			, member.profile_color
+			, book_info.title
+			, book_info.author
+			, book_info.publisher
+			, book_info.date_published
+			, book_info.price_origin
+		FROM
+			book_selling, member, book_info
+		WHERE 
+			(book_selling.isbn = book_info.isbn)
+		AND
+			(book_selling.account_id = member.account_id)
+		AND
+			(book_selling.account_id = #{account_id})
+		ORDER BY
+			registerd_id DESC
+	</select>
+	
+</mapper>

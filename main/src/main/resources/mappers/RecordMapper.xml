@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.archibook.main.mapper.RecordMapper">
+	<insert id="insertRecord" parameterType="RecordDTO">
+		INSERT INTO reading_record(
+			  record_id
+			, account_id
+			, isbn
+			, date_started
+			, date_finished
+			, date_writing
+			, book_score
+			, content
+			, is_public
+		) VALUES (
+			#{record_id}
+			, #{account_id}
+			, #{isbn}
+			, #{date_started}
+			, #{date_finished}
+			, #{date_writing}
+			, #{book_score}
+			, #{content}
+			, #{is_public}
+		)
+	</insert>
+	
+	<select id="selectRecordDetail" parameterType="int" resultType="RecordDTO">
+		SELECT
+			  record_id
+			, reading_record.account_id
+			, reading_record.isbn
+			, date_started
+			, date_finished
+			, date_writing
+			, book_score
+			, content
+			, is_public
+			, book_info.title
+			, book_info.author
+			, book_info.publisher
+			, book_info.image_url
+			, member.nick_name
+			, member.profile_color
+		FROM
+			reading_record, member, book_info
+		WHERE 
+			(reading_record.isbn = book_info.isbn)
+		AND
+			(reading_record.account_id = member.account_id)
+		AND 
+			(record_id = #{record_id})
+	</select>
+	
+	<update id="updateRecordPublic" parameterType="RecordDTO">
+		UPDATE reading_record
+		SET
+			is_public = true
+		WHERE
+			record_id = #{record_id}
+		AND
+			account_id = #{account_id}
+	</update>
+	
+	<update id="updateRecordPrivate" parameterType="RecordDTO">
+		UPDATE reading_record
+		SET
+			is_public = false
+		WHERE
+			record_id = #{record_id}
+		AND
+			account_id = #{account_id}
+	</update>
+	
+	<delete id="deleteRecord" parameterType="RecordDTO">
+		DELETE FROM reading_record
+		WHERE
+			record_id = #{record_id}
+		AND 
+			account_id = #{account_id}
+	</delete>
+	
+	<select id="selectRecordList" parameterType="RecordDTO" resultType="RecordDTO">
+		SELECT
+			  record_id
+			, reading_record.account_id
+			, reading_record.isbn
+			, date_started
+			, date_finished
+			, date_writing
+			, book_score
+			, content
+			, is_public
+			, book_info.title
+			, book_info.author
+			, book_info.publisher
+			, book_info.image_url
+			, member.nick_name
+			, member.profile_color
+		FROM
+			reading_record, member, book_info
+		WHERE 
+			(reading_record.isbn = book_info.isbn)
+		AND
+			(reading_record.account_id = member.account_id)
+		AND
+			(is_public = true)
+		ORDER BY
+			record_id DESC
+	</select>
+	
+	<select id="selectRecordPersonal" parameterType="RecordDTO" resultType="RecordDTO">
+		SELECT
+			  record_id
+			, reading_record.account_id
+			, reading_record.isbn
+			, date_started
+			, date_finished
+			, date_writing
+			, book_score
+			, content
+			, is_public
+			, book_info.title
+			, book_info.author
+			, book_info.publisher
+			, book_info.image_url
+			, member.nick_name
+			, member.profile_color
+		FROM
+			reading_record, member, book_info
+		WHERE 
+			(reading_record.isbn = book_info.isbn)
+		AND
+			(reading_record.account_id = member.account_id)
+		AND
+			(reading_record.account_id = #{account_id})
+		ORDER BY
+			record_id DESC
+	</select>
+</mapper>

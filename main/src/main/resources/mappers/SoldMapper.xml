@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.archibook.main.mapper.SoldMapper">
+	<insert id="insertSold" parameterType="SoldDTO">
+		INSERT INTO book_sold(
+			  sold_id
+			, registerd_id
+			, buyer_id
+		) VALUES (
+			#{sold_id}
+			, #{registerd_id}
+			, #{buyer_id}
+		)
+	</insert>
+	
+	<select id="selectSoldList" parameterType="String" resultType="SoldDTO">
+		SELECT
+			  sold_id
+			, book_sold.registerd_id
+			, book_sold.buyer_id
+			, book_selling.isbn
+		FROM
+			book_sold, member, book_selling
+		WHERE 
+			(book_sold.registerd_id = book_selling.registerd_id)
+		AND
+			(book_sold.buyer_id = member.account_id)
+		AND
+			(book_sold.buyer_id = #{account_id})
+		ORDER BY
+			sold_id DESC
+	</select>
+</mapper>

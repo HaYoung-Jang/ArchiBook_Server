@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.archibook.main.mapper.BookMapper">
+	<sql id="bookColumns">
+		  isbn
+		, title
+		, author
+		, publisher
+		, date_published
+		, price_origin
+		, image_url
+		, link
+	</sql>
+	
+	<insert id="insertBook" parameterType="BookDTO">
+		INSERT INTO book_info(
+			<include refid="bookColumns"/>
+		) VALUES (
+			#{isbn}
+			, #{title}
+			, #{author}
+			, #{publisher}
+			, #{date_published}
+			, #{price_origin}
+			, #{image_url}
+			, #{link}
+		)
+	</insert>
+	
+	<select id="selectBookDetail" parameterType="String" resultType="BookDTO">
+		SELECT
+			<include refid="bookColumns"/>
+		FROM
+			book_info
+		WHERE 
+			isbn = #{isbn, jdbcType=VARCHAR}
+	</select>
+	
+	<select id="selectBookList" parameterType="BookDTO" resultType="BookDTO">
+		SELECT
+			<include refid="bookColumns"/>
+		FROM
+			book_info
+		ORDER BY
+			isbn ASC
+	</select>
+</mapper>

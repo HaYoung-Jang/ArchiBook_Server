@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.archibook.main.mapper.KeywordMapper">
+	<insert id="insertKeyword" parameterType="KeywordDTO">
+		INSERT INTO book_keyword(
+			    keyword_id
+			  , keyword
+			  , isbn
+		) VALUES (
+			#{keyword_id}
+			, #{keyword}
+			, #{isbn}
+		)
+	</insert>
+	
+	<select id="selectKeywordSame" parameterType="KeywordDTO" resultType="KeywordDTO">
+		SELECT
+			  keyword_id
+			, keyword
+			, book_keyword.isbn
+			, title
+		FROM
+			book_keyword, book_info
+		WHERE 
+			(book_keyword.isbn = book_info.isbn)
+		AND 
+			(keyword = #{keyword})
+		AND
+			(book_keyword.isbn != #{isbn})
+	</select>
+	
+	<select id="selectKeywordList" parameterType="String" resultType="KeywordDTO">
+		SELECT
+			  keyword_id
+			, keyword
+			, book_keyword.isbn
+			, title
+		FROM
+			book_keyword, book_info
+		WHERE 
+			(book_keyword.isbn = book_info.isbn)
+		AND 
+			(book_keyword.isbn = #{book_keyword.isbn})
+	</select>
+	
+	<select id="selectKeywordCount" parameterType="String" resultType="int">
+		SELECT
+			COUNT(*)
+		FROM
+			book_keyword
+		WHERE
+			isbn = #{isbn}
+	</select>
+</mapper>
