@@ -15,7 +15,7 @@
 	
 	<select id="selectRecommendList" parameterType="String" resultType="RecommendDTO">
 		SELECT
-			  recommend_id
+			  DISTINCT
 			, book_recommend.account_id
 			, book_recommend.isbn
 			, book_info.title
