@@ -6,6 +6,10 @@ public class KeywordDTO {
 	private String keyword;
 	private String isbn;
 	private String title;
+	private String author;
+	private String publisher;
+	private String date_published;
+	private String image_url;
 	
 	public int getKeywordId() {
 		return keyword_id;
@@ -31,11 +35,35 @@ public class KeywordDTO {
 	public void setTitle(String title) {
 		this.title = title;
 	}
+	public String getAuthor() {
+		return author;
+	}
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+	public String getPublisher() {
+		return publisher;
+	}
+	public void setPublisher(String publisher) {
+		this.publisher = publisher;
+	}
+	public String getDatePublished() {
+		return date_published;
+	}
+	public void setDatePublished(String date_published) {
+		this.date_published = date_published;
+	}
+	public String getImageUrl() {
+		return image_url;
+	}
+	public void setImageUrl(String image_url) {
+		this.image_url = image_url;
+	}
 	
 	@Override
 	public String toString() {
 		return "KeywordDTO [keyword_id=" + keyword_id + ", keyword=" + keyword + ", isbn=" + isbn + ", title=" + title
-				+ "]";
+				+ ", author=" + author + ", publisher=" + publisher + ", date_published=" + date_published
+				+ ", image_url=" + image_url + "]";
 	}
-	
 }

@@ -35,6 +35,12 @@ public class KeywordController {
 		return keywordMapper.selectKeywordSame(keyword, isbn);
 	}
 	
+	@GetMapping("/search")
+	public List<KeywordDTO> keywordSearch(
+			@RequestParam(value = "keyword") String keyword) {
+		return keywordMapper.selectKeywordSearch(keyword);
+	}
+	
 	@GetMapping("/count")
 	public int KeywordCount(
 			@RequestParam(value = "isbn") String isbn) {

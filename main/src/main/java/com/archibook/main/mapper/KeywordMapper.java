@@ -12,6 +12,7 @@ public interface KeywordMapper {
 	public int insertKeyword(KeywordDTO params);
 	public List<KeywordDTO> selectKeywordSame(String keyword, String isbn);
 	public List<KeywordDTO> selectKeywordList(String isbn);
+	public List<KeywordDTO> selectKeywordSearch(String keyword);
 	public int selectKeywordCount(String isbn);
 	
 }

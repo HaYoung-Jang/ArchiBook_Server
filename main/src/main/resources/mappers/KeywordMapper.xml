@@ -43,6 +43,23 @@
 			(book_keyword.isbn = #{book_keyword.isbn})
 	</select>
 	
+	<select id="selectKeywordSearch" parameterType="String" resultType="KeywordDTO">
+		SELECT DISTINCT
+			  keyword
+			, book_keyword.isbn
+			, title
+			, author
+			, publisher
+			, date_published
+			, image_url
+		FROM 
+			book_keyword, book_info
+		WHERE
+			(book_keyword.isbn = book_info.isbn)
+		AND
+			(keyword = #{keyword})
+	</select>
+	
 	<select id="selectKeywordCount" parameterType="String" resultType="int">
 		SELECT
 			COUNT(*)
