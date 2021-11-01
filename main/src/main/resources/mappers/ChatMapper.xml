@@ -22,7 +22,7 @@
 			  chat_id
 			, seller_id
 			, buyer_id
-			, registerd_id
+			, chat_room.registerd_id
 			, room_name
 			, date_last
 			, time_last
@@ -43,7 +43,7 @@
 			  chat_id
 			, seller_id
 			, buyer_id
-			, registerd_id
+			, chat_room.registerd_id
 			, room_name
 			, date_last
 			, time_last
