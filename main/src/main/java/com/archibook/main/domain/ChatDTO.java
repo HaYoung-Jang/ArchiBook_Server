@@ -9,10 +9,10 @@ public class ChatDTO {
 	private String room_name;
 	private String date_last;
 	private String time_last;
-	private String seller_nick_name;
-	private String buyer_nick_name;
-	private String seller_profile_color;
-	private String buyer_profile_color;
+	private String seller_nick;
+	private String buyer_nick;
+	private String seller_profile;
+	private String buyer_profile;
 	
 	public int getChatId() {
 		return chat_id;
@@ -56,37 +56,36 @@ public class ChatDTO {
 	public void setTimeLast(String time_last) {
 		this.time_last = time_last;
 	}
-	public String getSeller_nick_name() {
-		return seller_nick_name;
+	public String getSellerNick() {
+		return seller_nick;
 	}
-	public void setSeller_nick_name(String seller_nick_name) {
-		this.seller_nick_name = seller_nick_name;
+	public void setSellerNick(String seller_nick) {
+		this.seller_nick = seller_nick;
 	}
-	public String getBuyer_nick_name() {
-		return buyer_nick_name;
+	public String getBuyerNick() {
+		return buyer_nick;
 	}
-	public void setBuyer_nick_name(String buyer_nick_name) {
-		this.buyer_nick_name = buyer_nick_name;
+	public void setBuyerNick(String buyer_nick) {
+		this.buyer_nick = buyer_nick;
 	}
-	public String getSeller_profile_color() {
-		return seller_profile_color;
+	public String getSellerProfile() {
+		return seller_profile;
 	}
-	public void setSeller_profile_color(String seller_profile_color) {
-		this.seller_profile_color = seller_profile_color;
+	public void setSellerProfile(String seller_profile) {
+		this.seller_profile = seller_profile;
 	}
-	public String getBuyer_profile_color() {
-		return buyer_profile_color;
+	public String getBuyerProfile() {
+		return buyer_profile;
 	}
-	public void setBuyer_profile_color(String buyer_profile_color) {
-		this.buyer_profile_color = buyer_profile_color;
+	public void setBuyerProfile(String buyer_profile) {
+		this.buyer_profile = buyer_profile;
 	}
 	
 	@Override
 	public String toString() {
 		return "ChatDTO [chat_id=" + chat_id + ", seller_id=" + seller_id + ", buyer_id=" + buyer_id + ", registerd_id="
 				+ registerd_id + ", room_name=" + room_name + ", date_last=" + date_last + ", time_last=" + time_last
-				+ ", seller_nick_name=" + seller_nick_name + ", buyer_nick_name=" + buyer_nick_name
-				+ ", seller_profile_color=" + seller_profile_color + ", buyer_profile_color=" + buyer_profile_color
-				+ "]";
+				+ ", seller_nick=" + seller_nick + ", buyer_nick=" + buyer_nick + ", seller_profile=" + seller_profile
+				+ ", buyer_profile=" + buyer_profile + "]";
 	}
 }

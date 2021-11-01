@@ -6,20 +6,20 @@
 			    chat_id
 			  , seller_id
 			  , buyer_id
-			  , seller_nick_name
-			  , buyer_nick_name
-			  , seller_profile_color
-			  , buyer_profile_color
+			  , seller_nick
+			  , buyer_nick
+			  , seller_profile
+			  , buyer_profile
 			  , registerd_id
 			  , room_name
 		) VALUES (
 			  #{chat_id}
 			, #{seller_id}
 			, #{buyer_id}
-			, #{seller_nick_name}
-			, #{buyer_nick_name}
-			, #{seller_profile_color}
-			, #{buyer_profile_color}
+			, #{seller_nick}
+			, #{buyer_nick}
+			, #{seller_profile}
+			, #{buyer_profile}
 			, #{registerd_id}
 			, #{room_name}
 		)
@@ -30,10 +30,10 @@
 			  chat_id
 			, seller_id
 			, buyer_id
-			, seller_nick_name
-			, buyer_nick_name
-			, seller_profile_color
-			, buyer_profile_color
+			, seller_nick
+			, buyer_nick
+			, seller_profile
+			, buyer_profile
 			, chat_room.registerd_id
 			, room_name
 			, date_last
@@ -51,10 +51,10 @@
 			  chat_id
 			, seller_id
 			, buyer_id
-			, seller_nick_name
-			, buyer_nick_name
-			, seller_profile_color
-			, buyer_profile_color
+			, seller_nick
+			, buyer_nick
+			, seller_profile
+			, buyer_profile
 			, chat_room.registerd_id
 			, room_name
 			, date_last
