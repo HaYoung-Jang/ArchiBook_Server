@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.archibook.main.mapper.ChatMapper">
+	<insert id="insertChat" parameterType="ChatDTO">
+		INSERT INTO chat_room (
+			    chat_id
+			  , seller_id
+			  , buyer_id
+			  , registerd_id
+			  , room_name
+		) VALUES (
+			#{chat_id}
+			, #{seller_id}
+			, #{buyer_id}
+			, #{registerd_id}
+			, #{room_name}
+		)
+	</insert>
+	
+	<select id="selectChatDetail" parameterType="int" resultType="ChatDTO">
+		SELECT
+			  chat_id
+			, seller_id
+			, buyer_id
+			, registerd_id
+			, room_name
+			, date_last
+			, time_last
+		FROM
+			chat_room, member, book_selling
+		WHERE 
+			(chat_room.seller_id = member.account_id)
+		AND
+			(chat_room.buyer_id = member.account_id)
+		AND 
+			(chat_room.registerd_id = book_selling.registerd_id)
+		AND 
+			chat_id = #{chat_id}
+	</select>
+	
+	<select id="selectChatList" parameterType="String" resultType="ChatDTO">
+		SELECT
+			  chat_id
+			, seller_id
+			, buyer_id
+			, registerd_id
+			, room_name
+			, date_last
+			, time_last
+		FROM
+			chat_room, member, book_selling
+		WHERE 
+			(chat_room.seller_id = member.account_id)
+		AND
+			(chat_room.buyer_id = member.account_id)
+		AND 
+			(chat_room.registerd_id = book_selling.registerd_id)
+		AND 
+			(seller_id = #{account_id} OR buyer_id = #{account_id})
+	</select>
+</mapper>
