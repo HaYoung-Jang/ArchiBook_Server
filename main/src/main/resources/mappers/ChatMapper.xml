@@ -6,12 +6,20 @@
 			    chat_id
 			  , seller_id
 			  , buyer_id
+			  , seller_nick_name
+			  , buyer_nick_name
+			  , seller_profile_color
+			  , buyer_profile_color
 			  , registerd_id
 			  , room_name
 		) VALUES (
-			#{chat_id}
+			  #{chat_id}
 			, #{seller_id}
 			, #{buyer_id}
+			, #{seller_nick_name}
+			, #{buyer_nick_name}
+			, #{seller_profile_color}
+			, #{buyer_profile_color}
 			, #{registerd_id}
 			, #{room_name}
 		)
@@ -22,17 +30,17 @@
 			  chat_id
 			, seller_id
 			, buyer_id
+			, seller_nick_name
+			, buyer_nick_name
+			, seller_profile_color
+			, buyer_profile_color
 			, chat_room.registerd_id
 			, room_name
 			, date_last
 			, time_last
 		FROM
-			chat_room, member, book_selling
+			chat_room, book_selling
 		WHERE 
-			(chat_room.seller_id = member.account_id)
-		AND
-			(chat_room.buyer_id = member.account_id)
-		AND 
 			(chat_room.registerd_id = book_selling.registerd_id)
 		AND 
 			chat_id = #{chat_id}
@@ -43,17 +51,17 @@
 			  chat_id
 			, seller_id
 			, buyer_id
+			, seller_nick_name
+			, buyer_nick_name
+			, seller_profile_color
+			, buyer_profile_color
 			, chat_room.registerd_id
 			, room_name
 			, date_last
 			, time_last
 		FROM
-			chat_room, member, book_selling
+			chat_room, book_selling
 		WHERE 
-			(chat_room.seller_id = member.account_id)
-		AND
-			(chat_room.buyer_id = member.account_id)
-		AND 
 			(chat_room.registerd_id = book_selling.registerd_id)
 		AND 
 			(seller_id = #{account_id} OR buyer_id = #{account_id})
