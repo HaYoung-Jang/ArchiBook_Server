@@ -65,5 +65,6 @@
 			(chat_room.registerd_id = book_selling.registerd_id)
 		AND 
 			(seller_id = #{account_id} OR buyer_id = #{account_id})
+		ORDER BY chat_id DESC;
 	</select>
 </mapper>
