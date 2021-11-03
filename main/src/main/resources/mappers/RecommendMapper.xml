@@ -15,7 +15,6 @@
 	
 	<select id="selectRecommendList" parameterType="String" resultType="RecommendDTO">
 		SELECT
-			  DISTINCT
 			  book_recommend.account_id
 			, book_recommend.isbn
 			, book_info.title
@@ -23,6 +22,7 @@
 			, book_info.publisher
 			, book_info.date_published
 			, book_info.image_url
+			, COUNT(book_recommend.isbn) AS cnt
 		FROM
 			book_recommend, member, book_info
 		WHERE 
@@ -31,7 +31,9 @@
 			(book_recommend.account_id = member.account_id)
 		AND
 			(book_recommend.account_id = #{account_id})
-		ORDER BY
-			recommend_id DESC
+		GROUP BY 
+			isbn
+		HAVING 
+			(cnt > 2)
 	</select>
 </mapper>
