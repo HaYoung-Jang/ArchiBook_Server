@@ -16,6 +16,7 @@
 	<select id="selectRecommendList" parameterType="String" resultType="RecommendDTO">
 		SELECT
 			  book_recommend.account_id
+			, recommend_id
 			, book_recommend.isbn
 			, book_info.title
 			, book_info.author
@@ -35,5 +36,6 @@
 			isbn
 		HAVING 
 			(cnt > 2)
+		ORDER BY cnt DESC
 	</select>
 </mapper>
