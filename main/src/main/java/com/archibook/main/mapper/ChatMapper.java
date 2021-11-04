@@ -12,4 +12,5 @@ public interface ChatMapper {
 	public int insertChat(ChatDTO params);
 	public ChatDTO selectChatDetail(int chatId);
 	public List<ChatDTO> selectChatList(String accountId);
+	public List<ChatDTO> selectChatSold(int registerdId, String accountId);
 }

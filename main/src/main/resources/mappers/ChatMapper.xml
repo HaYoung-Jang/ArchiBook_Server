@@ -67,4 +67,25 @@
 			(seller_id = #{account_id} OR buyer_id = #{account_id})
 		ORDER BY chat_id DESC;
 	</select>
+	
+	<select id="selectChatSold" parameterType="ChatDTO" resultType="ChatDTO">
+		SELECT DISTINCT
+			  seller_id
+			, buyer_id
+			, seller_nick
+			, buyer_nick
+			, seller_profile
+			, buyer_profile
+			, chat_room.registerd_id
+			, room_name
+			, isbn
+		FROM
+			chat_room, book_selling
+		WHERE 
+			(chat_room.registerd_id = book_selling.registerd_id)
+		AND 
+			(chat_room.registerd_id = #{registerd_id})
+		AND 
+			(seller_id = #{account_id})
+	</select>
 </mapper>

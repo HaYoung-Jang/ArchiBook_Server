@@ -13,6 +13,7 @@ public class ChatDTO {
 	private String buyer_nick;
 	private String seller_profile;
 	private String buyer_profile;
+	private String isbn;
 	
 	public int getChatId() {
 		return chat_id;
@@ -80,12 +81,18 @@ public class ChatDTO {
 	public void setBuyerProfile(String buyer_profile) {
 		this.buyer_profile = buyer_profile;
 	}
+	public String getIsbn() {
+		return isbn;
+	}
+	public void setIsbn(String isbn) {
+		this.isbn = isbn;
+	}
 	
 	@Override
 	public String toString() {
 		return "ChatDTO [chat_id=" + chat_id + ", seller_id=" + seller_id + ", buyer_id=" + buyer_id + ", registerd_id="
 				+ registerd_id + ", room_name=" + room_name + ", date_last=" + date_last + ", time_last=" + time_last
 				+ ", seller_nick=" + seller_nick + ", buyer_nick=" + buyer_nick + ", seller_profile=" + seller_profile
-				+ ", buyer_profile=" + buyer_profile + "]";
+				+ ", buyer_profile=" + buyer_profile + ", isbn=" + isbn + "]";
 	}
 }

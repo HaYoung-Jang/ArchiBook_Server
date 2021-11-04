@@ -34,6 +34,13 @@ public class ChatController {
 		return chatMapper.selectChatDetail(chat_id);
 	}
 	
+	@GetMapping("/sold")
+	public List<ChatDTO> ChatSold(
+			@RequestParam(value = "registerd_id") int registerd_id
+			, @RequestParam(value = "account_id") String account_id) {
+		return chatMapper.selectChatSold(registerd_id, account_id);
+	}
+	
 	@PostMapping("/register")
 	public int ChatInsert(@RequestBody ChatDTO params) {
 		return chatMapper.insertChat(params);
