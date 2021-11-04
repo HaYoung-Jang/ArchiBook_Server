@@ -20,6 +20,7 @@
 			, book_sold.buyer_id
 			, book_selling.isbn
 			, nick_name
+			, profile_color
 		FROM
 			book_sold, member, book_selling
 		WHERE 

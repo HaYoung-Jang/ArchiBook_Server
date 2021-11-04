@@ -6,6 +6,7 @@ public class SoldDTO {
 	private int registerd_id;
 	private String buyer_id;
 	private String nick_name;
+	private String profile_color;
 	
 	public int getSoldId() {
 		return sold_id;
@@ -25,16 +26,22 @@ public class SoldDTO {
 	public void setBuyerId(String buyer_id) {
 		this.buyer_id = buyer_id;
 	}
-	public String getNick_name() {
+	public String getNickName() {
 		return nick_name;
 	}
-	public void setNick_name(String nick_name) {
+	public void setNickName(String nick_name) {
 		this.nick_name = nick_name;
+	}
+	public String getProfileColor() {
+		return profile_color;
+	}
+	public void setProfileColor(String profile_color) {
+		this.profile_color = profile_color;
 	}
 	
 	@Override
 	public String toString() {
 		return "SoldDTO [sold_id=" + sold_id + ", registerd_id=" + registerd_id + ", buyer_id=" + buyer_id
-				+ ", nick_name=" + nick_name + "]";
+				+ ", nick_name=" + nick_name + ", profile_color=" + profile_color + "]";
 	}
 }
