@@ -2,7 +2,7 @@ package com.archibook.main.domain;
 
 public class ChatDTO {
 
-	private int chat_id;
+	private String chat_id;
 	private String seller_id;
 	private String buyer_id;
 	private int registerd_id;
@@ -15,10 +15,10 @@ public class ChatDTO {
 	private String buyer_profile;
 	private String isbn;
 	
-	public int getChatId() {
+	public String getChatId() {
 		return chat_id;
 	}
-	public void setChatId(int chat_id) {
+	public void setChatId(String chat_id) {
 		this.chat_id = chat_id;
 	}
 	public String getSellerId() {
