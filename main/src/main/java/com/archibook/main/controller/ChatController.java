@@ -31,7 +31,7 @@ public class ChatController {
 	
 	@GetMapping("/detail")
 	public ChatDTO ChatDetail(
-			@RequestParam(value = "chat_id") int chat_id) {
+			@RequestParam(value = "chat_id") String chat_id) {
 		return chatMapper.selectChatDetail(chat_id);
 	}
 	
