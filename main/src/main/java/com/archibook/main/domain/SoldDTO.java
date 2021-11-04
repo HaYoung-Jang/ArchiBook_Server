@@ -5,6 +5,7 @@ public class SoldDTO {
 	private int sold_id;
 	private int registerd_id;
 	private String buyer_id;
+	private String nick_name;
 	
 	public int getSoldId() {
 		return sold_id;
@@ -24,10 +25,16 @@ public class SoldDTO {
 	public void setBuyerId(String buyer_id) {
 		this.buyer_id = buyer_id;
 	}
+	public String getNick_name() {
+		return nick_name;
+	}
+	public void setNick_name(String nick_name) {
+		this.nick_name = nick_name;
+	}
 	
 	@Override
 	public String toString() {
-		return "SoldDTO [sold_id=" + sold_id + ", registerd_id=" + registerd_id + ", buyer_id=" + buyer_id + "]";
+		return "SoldDTO [sold_id=" + sold_id + ", registerd_id=" + registerd_id + ", buyer_id=" + buyer_id
+				+ ", nick_name=" + nick_name + "]";
 	}
-		
 }

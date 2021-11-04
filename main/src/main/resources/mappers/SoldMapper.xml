@@ -19,6 +19,7 @@
 			, book_sold.registerd_id
 			, book_sold.buyer_id
 			, book_selling.isbn
+			, nick_name
 		FROM
 			book_sold, member, book_selling
 		WHERE 
