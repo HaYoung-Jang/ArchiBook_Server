@@ -21,12 +21,15 @@
 			, book_selling.isbn
 			, nick_name
 			, profile_color
+			, title
 		FROM
-			book_sold, member, book_selling
+			book_sold, member, book_selling, book_info
 		WHERE 
 			(book_sold.registerd_id = book_selling.registerd_id)
 		AND
-			(book_sold.buyer_id = member.account_id)
+			(book_selling.account_id = member.account_id)
+		AND
+			(book_selling.isbn = book_info.isbn)
 		AND
 			(book_sold.buyer_id = #{account_id})
 		ORDER BY

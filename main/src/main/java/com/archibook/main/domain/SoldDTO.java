@@ -7,6 +7,8 @@ public class SoldDTO {
 	private String buyer_id;
 	private String nick_name;
 	private String profile_color;
+	private String isbn;
+	private String title;
 	
 	public int getSoldId() {
 		return sold_id;
@@ -38,10 +40,23 @@ public class SoldDTO {
 	public void setProfileColor(String profile_color) {
 		this.profile_color = profile_color;
 	}
+	public String getIsbn() {
+		return isbn;
+	}
+	public void setIsbn(String isbn) {
+		this.isbn = isbn;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
 	
 	@Override
 	public String toString() {
 		return "SoldDTO [sold_id=" + sold_id + ", registerd_id=" + registerd_id + ", buyer_id=" + buyer_id
-				+ ", nick_name=" + nick_name + ", profile_color=" + profile_color + "]";
+				+ ", nick_name=" + nick_name + ", profile_color=" + profile_color + ", isbn=" + isbn + ", title="
+				+ title + "]";
 	}
 }
