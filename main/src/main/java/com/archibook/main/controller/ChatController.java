@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.archibook.main.domain.ChatDTO;
+import com.archibook.main.domain.KeywordDTO;
 import com.archibook.main.mapper.ChatMapper;
 
 @RestController
