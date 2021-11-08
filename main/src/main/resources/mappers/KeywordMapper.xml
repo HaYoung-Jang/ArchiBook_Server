@@ -58,6 +58,7 @@
 			(book_keyword.isbn = book_info.isbn)
 		AND
 			(keyword = #{keyword})
+		ORDER BY book_keyword.isbn
 	</select>
 	
 	<select id="selectKeywordCount" parameterType="String" resultType="int">
